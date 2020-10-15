@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 
 class App extends Component {
-  state = { userName: '' };
+  state = { username: '' };
 
   fillUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const userName = e.target.value;
+    const username = e.target.value;
     this.setState(() => ({
-      userName,
+      username,
     }));
     console.log(e.target.value);
   }
 
-  addUser = (e: React.MouseEvent<HTMLElement>) => {
+  addUser = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    console.log(this.state.userName);
+
+    const res = await axios({
+      method: 'post',
+      url: 'http://localhost:8080/api/exercise/new-user',
+      data: {
+        username: this.state.username,
+      }
+    });
+    console.log('------------', res.data);
   };
 
 
