@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+const hostName = (process.env.NODE_ENV === 'development')
+  ? 'http://localhost:8090/'
+  : 'https://tracker-fcc.herokuapp.com/';
+
 
 class App extends Component {
   state = { username: '' };
@@ -19,7 +23,7 @@ class App extends Component {
 
     const res = await axios({
       method: 'post',
-      url: 'http://localhost:8080/api/exercise/new-user',
+      url: `${hostName}api/exercise/new-user`,
       data: {
         username: this.state.username,
       }
