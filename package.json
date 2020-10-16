@@ -17,6 +17,9 @@
     "react-scripts": "3.4.3",
     "typescript": "^3.7.5"
   },
+  "engines": {
+    "node": "14.14.0"
+  },
   "scripts": {
     "start": "node server.js",
     "build": "react-scripts build",
